@@ -26,7 +26,7 @@ function App() {
         onComplete={async (proposalData) => {
           try {
             const response = await fetch(
-              "http://localhost:3000/api/proposals",
+              "https://floresparamitul-backend.onrender.com/api/proposals",
               {
                 method: "POST",
                 headers: {
