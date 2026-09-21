@@ -42,4 +42,22 @@ export const flowers: Flower[] = [
         image: "/images/flowers/lavender.png",
         petal: "#D5A7E8",
     },
+    {
+        id: "gerbera",
+        name: "Gerbera",
+        image: "/images/flowers/gerbera.png",
+        petal: "#e8c3a5",
+    },
+    {
+        id: "orquidea",
+        name: "Orquídea",
+        image: "/images/flowers/orquidea.png",
+        petal: "#cea1db",
+    },
+    {
+        id: "lilies",
+        name: "Lirios (Azucena)",
+        image: "/images/flowers/lilies.png",
+        petal: "#e7e5cf",
+    },
 ];
