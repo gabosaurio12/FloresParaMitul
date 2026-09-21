@@ -8,7 +8,7 @@ import { initializeDatabase, saveProposal } from "./database";
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const app = express();
-const PORT = 3000;
+const PORT = Number(process.env.PORT) || 3000;
 
 app.use(cors());
 app.use(express.json());
