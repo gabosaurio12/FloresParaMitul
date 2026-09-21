@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { flowers } from "../data/flowers";
 import { petalMessages } from "../data/petalMessages";
@@ -30,24 +30,6 @@ function FlowerExperience({flowerId}: FlowerExperienceProps) {
             delay: Math.random() * 1.5,
         }));
     }, []);
-
-    useEffect(() => {
-        if (discoveredPetals.size === petals.length) {
-
-            const closeNoteTimer = setTimeout(() => {
-                setSelectedPetal(null);
-            }, 1000);
-
-            const finalMessageTimer = setTimeout(() => {
-                setShowFinalMessage(true);
-            }, 1700);
-
-            return () => {
-                clearTimeout(closeNoteTimer);
-                clearTimeout(finalMessageTimer);
-            }
-        }
-    }, [discoveredPetals.size, petals.length]);
 
     const selectedFlower = flowers.find(
         (flower) => flower.id === flowerId
@@ -201,7 +183,19 @@ function FlowerExperience({flowerId}: FlowerExperienceProps) {
                         <button
                             type="button"
                             className="petal-close"
-                            onClick={() => setSelectedPetal(null)}
+                            onClick={() => {
+                                const isLastPetal =
+                                    discoveredPetals.size === petals.length;
+
+                                setSelectedPetal(null);
+
+                                if (isLastPetal) {
+                                    setTimeout(() => {
+                                        setShowFinalMessage(true);
+                                    }, 700);
+                                }
+
+                            }}
                         >
                             Volver a los pétalos
                         </button>
